@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'api_response.dart';
-import 'movie_repository.dart';
-import 'movie_response.dart';
+import '../api/api_response.dart';
+import '../models/movie_response.dart';
+import '../repository/movie_repository.dart';
 
 class MovieBloc {
   late MovieRepository _movieRepository;

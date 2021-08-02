@@ -1,5 +1,5 @@
-import 'api_base_helper.dart';
-import 'movie_response.dart';
+import '../api/api_base_helper.dart';
+import '../models/movie_response.dart';
 
 class MovieRepository {
   final String _apiKey = "78b9f63937763a206bff26c070b94158";

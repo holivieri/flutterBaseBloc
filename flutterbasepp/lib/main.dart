@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'api_response.dart';
-import 'movie_bloc.dart';
-import 'movie_response.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'api/api_response.dart';
+import 'bloc/movie_bloc.dart';
+import 'models/movie_response.dart';
+import 'widgets/header.dart';
 
 void main() => runApp(MyApp());
 
@@ -55,12 +58,14 @@ class _MovieScreenState extends State<MovieScreen> {
                 case Status.LOADING:
                   return Loading(loadingMessage: snapshot.data!.message);
                 case Status.COMPLETED:
-                  /*        return IconHeader(
+                  return IconHeader(
                     title: 'Titulo',
                     subTitle: 'Subtitulo',
-                    icon: FontAwesomeIcons.algolia,
-                  ); */
-                  return MovieList(movieList: snapshot.data!.data);
+                    icon: FontAwesomeIcons.airbnb,
+                    color1: Color(0xff526BF6),
+                    color2: Color(0xff69ACF2),
+                  );
+                //return MovieList(movieList: snapshot.data!.data);
                 case Status.ERROR:
                   return Error(
                     errorMessage: snapshot.data!.message,

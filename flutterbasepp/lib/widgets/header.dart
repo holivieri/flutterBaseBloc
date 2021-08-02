@@ -7,7 +7,7 @@ class IconHeader extends StatelessWidget {
     required this.title,
     required this.subTitle,
     this.color1 = Colors.pink,
-    this.color2 = Colors.purple,
+    this.color2 = Colors.pinkAccent,
   });
 
   final IconData icon;
@@ -22,12 +22,15 @@ class IconHeader extends StatelessWidget {
 
     return Stack(
       children: [
-        _IconHeaderBackground(),
+        _IconHeaderBackground(
+          color1: color1,
+          color2: color2,
+        ),
         Positioned(
           top: -50,
           left: -70,
           child: FaIcon(
-            FontAwesomeIcons.plus,
+            icon,
             size: 250,
             color: Colors.white.withOpacity(0.2),
           ),
@@ -39,7 +42,7 @@ class IconHeader extends StatelessWidget {
               width: double.infinity,
             ),
             Text(
-              'Haz solicitado',
+              subTitle,
               style: TextStyle(
                 fontSize: 20,
                 color: colorWhite,
@@ -49,7 +52,7 @@ class IconHeader extends StatelessWidget {
               height: 20,
             ),
             Text(
-              'Asistencia medica',
+              title,
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -72,7 +75,13 @@ class IconHeader extends StatelessWidget {
 }
 
 class _IconHeaderBackground extends StatelessWidget {
-  const _IconHeaderBackground();
+  const _IconHeaderBackground({
+    required this.color1,
+    required this.color2,
+  });
+
+  final Color color1;
+  final Color color2;
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +97,10 @@ class _IconHeaderBackground extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: <Color>[
-              Color(0xff526BF6),
-              Color(0xff67ACF2),
+              color1,
+              color2,
+              //Color(0xff526BF6),
+              //Color(0xff67ACF2),
             ],
           )),
     );
