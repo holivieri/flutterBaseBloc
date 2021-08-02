@@ -2,7 +2,7 @@ import 'dart:async';
 
 import '../api/api_response.dart';
 import '../models/movie_response.dart';
-import '../repository/movie_repository.dart';
+import '../repositories/movie_repository.dart';
 
 class MovieBloc {
   late MovieRepository _movieRepository;
