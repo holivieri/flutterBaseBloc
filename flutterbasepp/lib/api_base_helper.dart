@@ -26,10 +26,11 @@ class ApiBaseHelper {
 
   Future<dynamic> post(String url, dynamic body) async {
     print('Api Post, url $url');
+    final fullUrl = Uri.parse(_baseUrl + url);
     var responseJson;
     try {
       final response = await http.post(
-        Uri.http(_baseUrl, url),
+        fullUrl,
         body: body,
       );
       responseJson = _returnResponse(response);
@@ -44,9 +45,10 @@ class ApiBaseHelper {
   Future<dynamic> put(String url, dynamic body) async {
     print('Api Put, url $url');
     var responseJson;
+    final fullUrl = Uri.parse(_baseUrl + url);
     try {
       final response = await http.put(
-        Uri.http(_baseUrl, url),
+        fullUrl,
         body: body,
       );
       responseJson = _returnResponse(response);
@@ -54,16 +56,16 @@ class ApiBaseHelper {
       print('No net');
       throw FetchDataException('No Internet connection');
     }
-    print('api put.');
-    print(responseJson.toString());
     return responseJson;
   }
 
   Future<dynamic> delete(String url) async {
     print('Api delete, url $url');
+    final fullUrl = Uri.parse(_baseUrl + url);
+
     var apiResponse;
     try {
-      final response = await http.delete(Uri.http(_baseUrl, url));
+      final response = await http.delete(fullUrl);
       apiResponse = _returnResponse(response);
     } on SocketException {
       print('No net');
